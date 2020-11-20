@@ -241,7 +241,8 @@ where
         event_loop.run(move |event, _, control_flow| match event {
             Event::NewEvents(StartCause::ResumeTimeReached { .. })
             | Event::NewEvents(StartCause::Init) => {
-                next_frame_time = Instant::now() + Duration::from_nanos(16_666_667);
+                // next_frame_time = Instant::now() + Duration::from_nanos(16_666_667);
+                next_frame_time = Instant::now() + Duration::from_nanos(2 * 16_666_667);
                 *control_flow = ControlFlow::WaitUntil(next_frame_time);
                 if !should_render {
                     return;
